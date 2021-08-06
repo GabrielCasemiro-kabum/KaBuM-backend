@@ -44,8 +44,11 @@ $ python app.py
 - dockerfile: Dockerfile in this repository
 
 ## commands docker
-- docker build --tag docker-app-kabum .   
-- docker run -p 2300:5000 -d docker-app-kabum   
+```
+docker build --tag docker-app-kabum .   
+docker run -p 2300:5000 -d docker-app-kabum   
+```
+**router is this case: ```http://localhost:2300/api/fretes```
 
 # Router API
 
