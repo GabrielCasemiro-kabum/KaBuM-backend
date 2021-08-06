@@ -9,7 +9,22 @@
 - Blueprint - A template for generating a view of api for docummentation and tests,
 - Pip - Dependency Management.
 
-## Virtual environments
+## Virtual environments (Linux)
+- install [Python](https://www.python.org/downloads/)
+```
+$ sudo apt-get install python-virtualenv
+$ python3 -m venv venv
+$ . venv/bin/activate
+```
+Install all project dependencies using:
+```
+$ pip install -r requirements.txt
+```
+Runing
+```
+$ python app.py
+```
+## Virtual environments (Windows)
 - install [Python](https://www.python.org/downloads/)
 ```
 $ pip install virtualenv
@@ -20,11 +35,17 @@ Install all project dependencies using:
 ```
 $ pip install -r requirements.txt
 ```
-## Running 
-
+Runing
 ```
 $ python app.py
 ```
+# Virtual environments (Docker)
+- install [Docker](https://www.docker.com/)
+- dockerfile: Dockerfile in this repository
+
+## commands docker
+- docker build --tag docker-app-kabum .   
+- docker run -p 2300:5000 -d docker-app-kabum   
 
 # Router API
 
