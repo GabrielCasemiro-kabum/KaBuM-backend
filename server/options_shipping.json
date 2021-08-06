@@ -1,6 +1,6 @@
 [
     {
-        "tipo_entrega": "Ninja",
+        "tipo_entrega": "Entrega Ninja",
         "const_calculo_frete": 0.3,
         "altura_minima": 10,
         "altura_maxima": 200,
@@ -8,7 +8,7 @@
         "largura_maxima": 140,
         "prazo_entrega": 6
     },
-    {   "tipo_entrega":"Kabum",
+    {   "tipo_entrega":"Entrega Kabum",
         "const_calculo_frete": 0.2,
         "altura_minima": 5,
         "altura_maxima": 140,

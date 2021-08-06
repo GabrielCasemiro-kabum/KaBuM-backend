@@ -1,20 +1,8 @@
-from os import name
-from server.instance import server
-from flask_restplus import fields
-
 import json
+from server.instance import server
 
 # json shipping options
 file_options_shipping = 'server\options_shipping.json'
-
-# instance of a Api
-shipping_ns = server.shipping_ns
-
-shipping = shipping_ns.model('shipping',{
-    "nome": fields.String(description='Entrega Ninja'),
-    "valor_shipping": fields.Integer(description=8.00),
-    "prazo_dias": fields.Integer(description=4),
-})
 
 class Shipping():
 
@@ -43,10 +31,8 @@ class Shipping():
     
     @classmethod
     def freight_calculation(self, product_weight, const_freight):
-        try:
-            freight_value = (product_weight * const_freight) / 10
-            return freight_value
-        except: return 0
+        freight_value = (product_weight * const_freight) / 10
+        return freight_value
     
     @classmethod
     def calculate_shipping(self, cls):
@@ -61,7 +47,7 @@ class Shipping():
         with open(file_options_shipping, "r") as read_file:
             options_shipping = json.load(read_file)
 
-            # percorre o arquivo json onde contém todos os tipos de entregas da KaBuM!
+            # scrolls through the json file containing all types of KaBuM deliveries!
             for op_ship in options_shipping:
                 option_min_height = float(op_ship['altura_minima'])
                 option_max_height = float(op_ship['altura_maxima'])
@@ -78,12 +64,10 @@ class Shipping():
                     const_freight = float(op_ship['const_calculo_frete'])
                     
                     freight_value = Shipping.freight_calculation(product_weight, const_freight)
-                    
                     shipping = Shipping(option_name, freight_value, delivery_deadline)
-
-                    shipping_json = json.dumps(shippings)
+                    
                     # serialize to JSON
-                    shipping_json = shipping_json.dum
+                    shipping_json = shipping.json()
                     list_freight.append(shipping_json)
 
         return list_freight

@@ -1,8 +1,5 @@
 from flask import Flask, Blueprint
 from flask_restplus import Api
-from ma import ma
-
-from marshmallow import ValidationError
 
 class Server():
     def __init__(self):
@@ -12,12 +9,9 @@ class Server():
                         version='1.0', 
                         doc='/doc', 
                         title='Challenge KaBuM with Flask-RestPlus',
-                        description='A api  KaBuM!')
+                        description='REST API that will be used by the website to query product transport options!')
         self.app.register_blueprint(self.bluePrint)
 
-        #self.app.config['SQLALCHEMY_DATABASE_URI'] = False
-        self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-        self.app.config['PROPAGATE_EXCEPTIONS'] = True
         self.app.config['JSON_SORT_KEYS'] = False
 
         self.shipping_ns = self.shipping_ns()

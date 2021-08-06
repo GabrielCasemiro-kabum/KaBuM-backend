@@ -1,5 +1,5 @@
-from server.instance import server
 from flask_restplus import fields
+from server.instance import server
 
 # instance of a Api
 shipping_ns = server.shipping_ns

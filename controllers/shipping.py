@@ -1,16 +1,14 @@
-from flask import request
 from flask_restplus import Resource
-import json
 
 from server.instance import server
-from models.shipping import shipping, Shipping
+from models.shipping import Shipping
 from models.product import product
 
 # instance of a Api
 shipping_ns = server.shipping_ns
 
 class ShippingRoute(Resource):
-    # validation of a payload
+    # add model in doc
     @shipping_ns.expect(product)
     @shipping_ns.doc('Calculate de shipping')   
     def post(self, ):
@@ -19,12 +17,6 @@ class ShippingRoute(Resource):
             
             shippings = Shipping.calculate_shipping(product_data)
             
-            # serialize data shipping to JSON
-            print(shippings)
-            json_list_freight = json.dumps(shippings)
-            print(json_list_freight)
-            return json_list_freight, 201
+            return shippings, 201
         except:
-            return {"message": "Error in calculate freight!"}
-
-     
+            return {"message": "Error in calculate freight!"}, 404
