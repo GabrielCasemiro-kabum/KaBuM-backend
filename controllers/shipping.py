@@ -19,4 +19,4 @@ class ShippingRoute(Resource):
             
             return shippings, 201
         except:
-            return {"message": "Error in calculate freight!"}, 404
+            return {"message": "Error in calculate freight!"}
